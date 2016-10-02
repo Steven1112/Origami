@@ -1,0 +1,17 @@
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/steven_wong/Desktop/Origami/obj/Debug/Assembly-CSharp-firstpass.dll
+/Users/steven_wong/Desktop/Origami/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/UnityEngine.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/UnityEditor.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Mono.Cecil.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Unity.DataContract.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/steven_wong/Desktop/Origami/Temp/bin/Debug/Mono.Cecil.Mdb.dll
