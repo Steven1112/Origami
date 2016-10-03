@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\MidGroundManager.cs" />
+     <Compile Include="Assets\Scripts\MidGroundMoving.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\RendererExtensions.cs.cs" />
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
