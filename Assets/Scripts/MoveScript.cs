@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
 
 public class MoveScript : MonoBehaviour {
 	public float movingSpeed;
@@ -8,6 +10,12 @@ public class MoveScript : MonoBehaviour {
 	private bool isGround;
 	private  Rigidbody rb;
 	public float JumpForce;
+	public  Collider[] attackHitBox;
+	private float playerHealth = 100;
+	public float playerCurrentHealth = 100;
+	public float meeleDmg = 10;
+	public Image HealthBar;
+
 	void Awake(){
 		isLeft = false;
 		isRight = true;
@@ -17,6 +25,10 @@ public class MoveScript : MonoBehaviour {
 	}
 	void Update ()
 	{
+		//update Health Bar
+		float ratio = playerCurrentHealth/playerHealth;
+		HealthBar.rectTransform.localScale =  new Vector3 (ratio, HealthBar.rectTransform.localScale.y, HealthBar.rectTransform.localScale.z);
+
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
 			if (isRight)
@@ -59,14 +71,25 @@ public class MoveScript : MonoBehaviour {
 		{
 			if (isGround) 
 			{
-				Debug.Log (isGround);
+				
 				rb.AddForce (Vector3.up * JumpForce);
 				isGround = false;
 			}
+		}
+		if (Input.GetKeyDown(KeyCode.Z)) {
+			LaunchAttack (attackHitBox [0]);
 		}
 	}
 	void OnCollisionEnter(Collision coll) {
 		if (coll.gameObject.tag == "Ground")
 			isGround = true;
+	}
+
+	private void LaunchAttack(Collider col){
+		Collider[] colls = Physics.OverlapBox (col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask ("Hitbox"));
+		foreach (Collider c in colls) {
+			c.SendMessageUpwards ("TakeDmg", meeleDmg);
+		}
+
 	}
 }
