@@ -15,25 +15,32 @@ public class MoveScript : MonoBehaviour {
 	public float playerCurrentHealth = 100;
 	public float meeleDmg = 10;
 	public Image HealthBar;
+	public Image HealthBarBack;
+	private float ratio;
 
 	void Awake(){
 		isLeft = false;
 		isRight = true;
 	}
+
 	void Start(){
 		rb = gameObject.GetComponent<Rigidbody>();
 	}
+
 	void Update ()
 	{
 		//update Health Bar
-		float ratio = playerCurrentHealth/playerHealth;
-		HealthBar.rectTransform.localScale =  new Vector3 (ratio, HealthBar.rectTransform.localScale.y, HealthBar.rectTransform.localScale.z);
+		ratio = playerCurrentHealth/playerHealth;
+
+		if (ratio > 0) {
+			HealthBar.rectTransform.localScale = new Vector3 (ratio, HealthBar.rectTransform.localScale.y, HealthBar.rectTransform.localScale.z);
+		}
 
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
 			if (isRight)
 			{
-				//turan around
+				//turn around
 				isLeft = true;
 				isRight = false;
 				transform.Rotate (Vector3.up*180f);
@@ -92,4 +99,5 @@ public class MoveScript : MonoBehaviour {
 		}
 
 	}
+
 }

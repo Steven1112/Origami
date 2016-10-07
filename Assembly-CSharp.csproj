@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\MidGroundManager.cs" />
      <Compile Include="Assets\Scripts\MidGroundMoving.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerRespawn.cs" />
      <Compile Include="Assets\Scripts\RendererExtensions.cs.cs" />
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
