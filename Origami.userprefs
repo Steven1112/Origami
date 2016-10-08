@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FireEffectScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CreatureAI/ChaseState.cs">
     <Files>
-      <File FileName="Assets/Scripts/FireEffectScript.cs" Line="22" Column="1" />
-      <File FileName="Assets/Scripts/PlayerRespawn.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MoveScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CreatureAI/PatrolState.cs" Line="13" Column="1" />
+      <File FileName="Assets/Scripts/CreatureAI/ChaseState.cs" Line="7" Column="33" />
+      <File FileName="Assets/Scripts/CreatureAI/AlertState.cs" Line="22" Column="14" />
+      <File FileName="Assets/Scripts/CreatureAI/StateMachine.cs" Line="6" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
