@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerRespawn.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FireEffectScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerRespawn.cs" Line="50" Column="27" />
-      <File FileName="Assets/Scripts/MoveScript.cs" Line="35" Column="14" />
+      <File FileName="Assets/Scripts/FireEffectScript.cs" Line="28" Column="38" />
+      <File FileName="Assets/Scripts/PlayerRespawn.cs" Line="16" Column="13" />
+      <File FileName="Assets/Scripts/MoveScript.cs" Line="21" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
