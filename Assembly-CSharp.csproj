@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\FireEffectScript.cs" />
      <Compile Include="Assets\Scripts\MidGroundManager.cs" />
      <Compile Include="Assets\Scripts\MidGroundMoving.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
