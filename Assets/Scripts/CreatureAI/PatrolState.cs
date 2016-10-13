@@ -35,10 +35,13 @@ public class PatrolState : StateMachine {
 	{
 		enemy.currentState = enemy.chaseState;
 	}
+	public void ToKillState()
+	{
+	}
 	private void Look()
 	{
 		RaycastHit hit;
-		if (Physics.Raycast (enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) && hit.collider.CompareTag ("Player")) {
+		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemy.eyes.transform.forward, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Player")) {
 			enemy.chaseTarget = hit.transform;
 			ToChaseState();
 		}
@@ -57,4 +60,5 @@ public class PatrolState : StateMachine {
 
 
 	}
+
 }

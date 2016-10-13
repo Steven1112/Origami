@@ -39,11 +39,16 @@ public class AlertState : StateMachine
 		enemy.currentState = enemy.chaseState;
 		searchTimer = 0f;
 	}
+	public void ToKillState()
+	{
+		
+	}
 
 	private void Look()
 	{
 		RaycastHit hit;
-		if (Physics.Raycast (enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) && hit.collider.CompareTag ("Player")) {
+		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemy.eyes.transform.forward, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Player")) {
+			Debug.Log (hit.collider.name);
 			enemy.chaseTarget = hit.transform;
 			ToChaseState();
 		}
@@ -53,12 +58,14 @@ public class AlertState : StateMachine
 	{
 		enemy.meshRendererFlag.material.color = Color.yellow;
 		enemy.navMeshAgent.Stop ();
-		enemy.transform.Rotate (0, enemy.searchingTurnSpeed * Time.deltaTime, 0);
+		enemy.eyes.transform.Rotate (0, enemy.searchingTurnSpeed * Time.deltaTime, 0);
 		searchTimer += Time.deltaTime;
 
 		if (searchTimer >= enemy.searchingDuration)
 			ToPatrolState ();
 	}
+
+
 
 
 }

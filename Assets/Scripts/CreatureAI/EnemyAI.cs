@@ -3,29 +3,35 @@ using System.Collections;
 using UnityEngine.UI;
 public class EnemyAI : MonoBehaviour {
 
-	public float searchingTurnSpeed = 120f;
-	public float searchingDuration = 4f;
-	public float sightRange = 20f;
+	public float searchingTurnSpeed ;
+	public float searchingDuration ;
+	public float killDuration;
+	public float sightRange ;
 	public Transform[] wayPoints;
 	public Transform eyes;
-	public Vector3 offset = new Vector3 (0,.5f,0);
 	public MeshRenderer meshRendererFlag;
-
+	public float visionSphereR;
+	public Image HealthBar;
+	public LayerMask notInVisionLayer;
+	public float enemyDmg=10;
+	public float attackDist;
 	[HideInInspector] public Transform chaseTarget;
 	[HideInInspector] public StateMachine currentState;
 	[HideInInspector] public ChaseState chaseState;
 	[HideInInspector] public AlertState alertState;
 	[HideInInspector] public PatrolState patrolState;
+	[HideInInspector] public KillState killState;
 	[HideInInspector] public NavMeshAgent navMeshAgent;
 	private float enemyHealth = 100;
 	private float enemyCurrentHealth = 100;
 
-	public Image HealthBar;
 
 	void Awake () {
+		killState = new KillState (this);
 		chaseState = new ChaseState (this);
 		alertState = new AlertState (this);
 		patrolState = new PatrolState (this);
+	
 
 		navMeshAgent = GetComponent<NavMeshAgent> ();
 	}
@@ -55,4 +61,5 @@ public class EnemyAI : MonoBehaviour {
 	private void Died(){
 		Destroy (gameObject);
 	}
+		
 }

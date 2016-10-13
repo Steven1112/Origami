@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CreatureAI\AlertState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\ChaseState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\CreatureAI\KillState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\PatrolState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\StateMachine.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />

@@ -87,6 +87,10 @@ public class MoveScript : MonoBehaviour {
 			LaunchAttack (attackHitBox [0]);
 		}
 	}
+
+	public void TakeDmg(float dmg){
+		playerCurrentHealth -= dmg;
+	}
 	void OnCollisionEnter(Collision coll) {
 		if (coll.gameObject.tag == "Ground")
 			isGround = true;
@@ -99,5 +103,7 @@ public class MoveScript : MonoBehaviour {
 		}
 
 	}
+
+
 
 }
