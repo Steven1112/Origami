@@ -19,10 +19,13 @@ public class MoveScript : MonoBehaviour {
 	private float ratio;
 	Animator anim;
 	public float animSpeed = 0.1f;
+	[HideInInspector] public bool enableInput;
+
 
 	void Awake(){
 		isLeft = false;
 		isRight = true;
+		enableInput = true;
 	}
 
 	void Start(){
@@ -40,98 +43,89 @@ public class MoveScript : MonoBehaviour {
 		if (ratio > 0) {
 			HealthBar.rectTransform.localScale = new Vector3 (ratio, HealthBar.rectTransform.localScale.y, HealthBar.rectTransform.localScale.z);
 		}
-
-		if (Input.GetKey(KeyCode.LeftArrow))
-		{
-			if (isRight)
-			{
-				//turn around
-				isLeft = true;
-				isRight = false;
-				transform.Rotate (Vector3.up*180f);
+			
+		if (enableInput) {
+			
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				if (isRight) {
+					//turn around
+					isLeft = true;
+					isRight = false;
+					transform.Rotate (Vector3.up * 180f);
+				}
+				Vector3 position = this.transform.position;
+				position.x = position.x - movingSpeed;
+				this.transform.position = position;
+				anim.Play ("Run");
+				animSpeed = 0.5f;
 			}
-			Vector3 position = this.transform.position;
-			position.x = position.x - movingSpeed;
-			this.transform.position = position;
-			anim.runtimeAnimatorController = Resources.Load ("Run_0") as RuntimeAnimatorController;
-			animSpeed = 0.5f;
-		}
 
-		if (Input.GetKeyUp(KeyCode.LeftArrow))
-		{
-			anim.runtimeAnimatorController = Resources.Load ("Idle_0") as RuntimeAnimatorController;
-			animSpeed = 0.1f;
-		}
-
-		if (Input.GetKey(KeyCode.RightArrow))
-		{
-			//turn
-			if (isLeft) 
-			{
-				isRight = true;
-				isLeft = false;
-				transform.Rotate (Vector3.up*-180f);
+			if (Input.GetKeyUp (KeyCode.LeftArrow)) {
+				anim.Play ("Idle");
+				animSpeed = 0.1f;
 			}
-			Vector3 position = this.transform.position;
-			position.x = position.x + movingSpeed;
-			this.transform.position = position;
-			anim.runtimeAnimatorController = Resources.Load ("Run_0") as RuntimeAnimatorController;
-			animSpeed = 0.5f;
-		}
 
-		if (Input.GetKeyUp(KeyCode.RightArrow))
-		{
-			anim.runtimeAnimatorController = Resources.Load ("Idle_0") as RuntimeAnimatorController;
-			animSpeed = 0.1f;
-		}
+			if (Input.GetKey (KeyCode.RightArrow)) {
+				//turn
+				if (isLeft) {
+					isRight = true;
+					isLeft = false;
+					transform.Rotate (Vector3.up * -180f);
+				}
+				Vector3 position = this.transform.position;
+				position.x = position.x + movingSpeed;
+				this.transform.position = position;
+				anim.Play ("Run");
+				animSpeed = 0.5f;
+			}
 
-		if (Input.GetKey(KeyCode.UpArrow))
-		{
-			Vector3 position = this.transform.position;
-			position.z=position.z+movingSpeed;
-			this.transform.position = position;
-			anim.runtimeAnimatorController = Resources.Load ("Run_0") as RuntimeAnimatorController;
-			animSpeed = 0.5f;
-		}
+			if (Input.GetKeyUp (KeyCode.RightArrow)) {
+				anim.Play ("Idle");
+				animSpeed = 0.1f;
+			}
 
-		if (Input.GetKeyUp(KeyCode.UpArrow))
-		{
-			anim.runtimeAnimatorController = Resources.Load ("Idle_0") as RuntimeAnimatorController;
-			animSpeed = 0.1f;
-		}
+			if (Input.GetKey (KeyCode.UpArrow)) {
+				Vector3 position = this.transform.position;
+				position.z = position.z + movingSpeed;
+				this.transform.position = position;
+				anim.Play ("Run");
+				animSpeed = 0.5f;
+			}
 
-		if (Input.GetKey(KeyCode.DownArrow))
-		{
-			Vector3 position = this.transform.position;
-			position.z=position.z-movingSpeed;
-			this.transform.position = position;
-			anim.runtimeAnimatorController = Resources.Load ("Run_0") as RuntimeAnimatorController;
-			animSpeed = 0.5f;
-		}
+			if (Input.GetKeyUp (KeyCode.UpArrow)) {
+				anim.Play ("Idle");
+				animSpeed = 0.1f;
+			}
 
-		if (Input.GetKeyUp(KeyCode.DownArrow))
-		{
-			anim.runtimeAnimatorController = Resources.Load ("Idle_0") as RuntimeAnimatorController;
-			animSpeed = 0.1f;
-		}
+			if (Input.GetKey (KeyCode.DownArrow)) {
+				Vector3 position = this.transform.position;
+				position.z = position.z - movingSpeed;
+				this.transform.position = position;
+				anim.Play ("Run");
+				animSpeed = 0.5f;
+			}
 
-		if (Input.GetKeyDown (KeyCode.Space)) 
-		{
-			if (isGround) 
-			{
+			if (Input.GetKeyUp (KeyCode.DownArrow)) {
+				anim.Play ("Idle");
+				animSpeed = 0.1f;
+			}
+
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				if (isGround) {
 				
-				rb.AddForce (Vector3.up * JumpForce);
-				isGround = false;
+					rb.AddForce (Vector3.up * JumpForce);
+					isGround = false;
+				}
 			}
-		}
-		if (Input.GetKeyDown(KeyCode.Z)) {
-			LaunchAttack (attackHitBox [0]);
-			anim.runtimeAnimatorController = Resources.Load ("Attack_0") as RuntimeAnimatorController;
-			animSpeed = 2.5f;
-		}
-		if (Input.GetKeyUp(KeyCode.Z)) {
-			anim.runtimeAnimatorController = Resources.Load ("Idle_0") as RuntimeAnimatorController;
-			animSpeed = 0.1f;
+			if (Input.GetKeyDown (KeyCode.Z)) {
+				LaunchAttack (attackHitBox [0]);
+				anim.Play("Attack");
+				animSpeed = 1.5f;
+			}
+			if (Input.GetKeyUp (KeyCode.Z)) {
+				anim.Play ("Idle");
+				animSpeed = 0.1f;
+			}
 		}
 	}
 

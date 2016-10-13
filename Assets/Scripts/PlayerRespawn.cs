@@ -35,8 +35,11 @@ public class PlayerRespawn: MonoBehaviour {
 
 			if (lives > 0) {
 				StartCoroutine (Dead ());
+//				spawnPlayer();
 			} else {
 				playerPrefab.GetComponent<Renderer> ().enabled = false;
+				moveScript.HealthBar.GetComponent<CanvasRenderer> ().SetAlpha (0);
+				moveScript.HealthBarBack.GetComponent<CanvasRenderer> ().SetAlpha (0);
 				//no lives and game over
 			}
 
@@ -50,7 +53,8 @@ public class PlayerRespawn: MonoBehaviour {
 		//hide all hp bars image
 		moveScript.HealthBar.GetComponent<CanvasRenderer> ().SetAlpha (0);
 		moveScript.HealthBarBack.GetComponent<CanvasRenderer> ().SetAlpha (0);
-		yield return new WaitForSeconds(5);
+		moveScript.enableInput = false;
+		yield return new WaitForSeconds(3);
 		spawnPlayer();
 		Debug.Log ("respawn");
 	}
@@ -77,6 +81,7 @@ public class PlayerRespawn: MonoBehaviour {
 			playerPrefab.transform.rotation = point.rotation;
 //			playerPrefab.transform.Translate (spawnPoint1.position);
 			playerPrefab.GetComponent<Renderer> ().enabled = true;
+			moveScript.enableInput = true;
 			//get hp bar images back
 			moveScript.HealthBar.GetComponent<CanvasRenderer> ().SetAlpha (1);
 			moveScript.HealthBarBack.GetComponent<CanvasRenderer> ().SetAlpha (1);

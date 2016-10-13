@@ -4,7 +4,7 @@ using System.Collections;
 public class Camera2DFollow : MonoBehaviour {
 	
 	public Transform target;
-	public float damping = 1;
+	public float damping = 0;
 	public float lookAheadFactor = 3;
 	public float lookAheadReturnSpeed = 0.5f;
 	public float lookAheadMoveThreshold = 0.1f;
@@ -22,7 +22,7 @@ public class Camera2DFollow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		
 		// only update lookahead pos if accelerating or changed direction
 		float xMoveDelta = (target.position - lastTargetPosition).x;
