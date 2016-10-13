@@ -57,10 +57,9 @@ public class ChaseState : StateMachine
 			float dist = Vector3.Distance (enemy.chaseTarget.position, enemy.eyes.transform.position);
 			if (dist < enemy.attackDist) {
 				ToKillState ();
-				Debug.Log ("Kill");
+			//	Debug.Log ("Kill");
 			} else {
-				Debug.Log ("Alert");
-				Debug.Log (dist);
+				//Debug.Log ("Alert");
 				ToAlertState ();
 			}
 		}
