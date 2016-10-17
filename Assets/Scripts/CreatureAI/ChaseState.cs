@@ -68,6 +68,7 @@ public class ChaseState : StateMachine
 
 	private void Chase()
 	{
+		enemy.anim.Play ("Run");
 		enemy.meshRendererFlag.material.color = Color.red;
 		enemy.navMeshAgent.destination = enemy.chaseTarget.position;
 		enemy.navMeshAgent.Resume ();

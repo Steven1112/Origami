@@ -16,6 +16,7 @@ public class MoveScript : MonoBehaviour {
 	public float meeleDmg = 10;
 	public Image HealthBar;
 	public Image HealthBarBack;
+	public GameObject mainCam;
 	private float ratio;
 	Animator anim;
 	public float animSpeed = 0.1f;
@@ -135,6 +136,16 @@ public class MoveScript : MonoBehaviour {
 	void OnCollisionEnter(Collision coll) {
 		if (coll.gameObject.tag == "Ground")
 			isGround = true;
+	}
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Maze") {
+			mainCam.SendMessage ("ChangeView");
+		}
+	}
+	void OnTriggerExit(Collider other) {
+		if (other.tag == "Maze") {
+			mainCam.SendMessage ("ResetView");
+		}
 	}
 
 	private void LaunchAttack(Collider col){

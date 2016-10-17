@@ -51,6 +51,7 @@ public class KillState : StateMachine {
 				killTimer += Time.deltaTime;
 				if (killTimer >= enemy.killDuration) {
 					enemy.chaseTarget.SendMessage ("TakeDmg", enemy.enemyDmg);
+					enemy.anim.Play ("Attack");
 					killTimer = 0;
 				}
 			} else {

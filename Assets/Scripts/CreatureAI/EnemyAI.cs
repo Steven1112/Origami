@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour {
 	[HideInInspector] public PatrolState patrolState;
 	[HideInInspector] public KillState killState;
 	[HideInInspector] public NavMeshAgent navMeshAgent;
+	[HideInInspector] public Animator anim;
 	private float enemyHealth = 100;
 	private float enemyCurrentHealth = 100;
 
@@ -34,10 +35,12 @@ public class EnemyAI : MonoBehaviour {
 	
 
 		navMeshAgent = GetComponent<NavMeshAgent> ();
+		anim = GetComponentInChildren<Animator> ();
 	}
 
 	void Start()
 	{
+		
 		currentState = patrolState;
 	}
 	// Update is called once per frame
@@ -57,6 +60,7 @@ public class EnemyAI : MonoBehaviour {
 	}
 	public void TakeDmg(float dmg){
 		enemyCurrentHealth -= dmg;
+		anim.Play ("Hurt");
 	}
 	private void Died(){
 		Destroy (gameObject);

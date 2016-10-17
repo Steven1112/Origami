@@ -48,7 +48,7 @@ public class AlertState : StateMachine
 	{
 		RaycastHit hit;
 		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemy.eyes.transform.forward, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Player")) {
-			Debug.Log (hit.collider.name);
+			//Debug.Log (hit.collider.name);
 			enemy.chaseTarget = hit.transform;
 			ToChaseState();
 		}
@@ -56,6 +56,7 @@ public class AlertState : StateMachine
 
 	private void Search()
 	{
+		enemy.anim.Play ("Ideal");
 		enemy.meshRendererFlag.material.color = Color.yellow;
 		enemy.navMeshAgent.Stop ();
 		enemy.eyes.transform.Rotate (0, enemy.searchingTurnSpeed * Time.deltaTime, 0);
