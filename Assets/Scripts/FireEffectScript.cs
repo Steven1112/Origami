@@ -18,7 +18,7 @@ public class FireEffectScript : MonoBehaviour {
 	void Start () {
 
 		go = GameObject.Find("Player");
-		monster = GameObject.Find("Enemy");
+		monster = GameObject.Find("Enemy/Creature");
 		target = go.transform;
 		targetMonster = monster.transform;
 	}
@@ -65,8 +65,8 @@ public class FireEffectScript : MonoBehaviour {
 			
 		}
 			
-
-		if (other.gameObject.name == "Creature") {
+		//monster hurt
+		if (other.gameObject == monster) {
 
 			print("Monster torching the fire!!!"); 
 
@@ -81,15 +81,15 @@ public class FireEffectScript : MonoBehaviour {
 			print("MonsterHealth" + monsterHealth);
 			other.gameObject.GetComponent<Enemy>().enemyCurrentHealth = monsterHealth;
 
-			float playPositionX = targetMonster.position.x;
-			float playPositionZ = targetMonster.position.z;
+			float playPositionX2 = targetMonster.position.x;
+			float playPositionZ2 = targetMonster.position.z;
 
 			// if no directly die
-			if (target != null){
+			if (targetMonster != null){
 
-				playPositionX -= 2;
-				playPositionZ -= 2;
-				target.position = new Vector3 (playPositionX, targetMonster.position.y, playPositionZ);
+				playPositionX2 -= 2;
+				playPositionZ2 -= 2;
+				target.position = new Vector3 (playPositionX2, targetMonster.position.y, playPositionZ2);
 
 			}
 
