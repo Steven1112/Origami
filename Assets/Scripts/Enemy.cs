@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour {
 
 	private float enemyHealth = 100;
-	private float enemyCurrentHealth = 100;
+	public float enemyCurrentHealth = 100;
 
 	public Image HealthBar;
 	// Use this for initialization

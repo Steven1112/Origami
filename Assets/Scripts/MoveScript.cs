@@ -122,6 +122,7 @@ public class MoveScript : MonoBehaviour {
 				LaunchAttack (attackHitBox [0]);
 				anim.Play("Attack");
 				animSpeed = 1.5f;
+
 			}
 			if (Input.GetKeyUp (KeyCode.Z)) {
 				anim.Play ("Idle");
