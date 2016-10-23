@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour {
 	public float visionSphereR;
 	public Image HealthBar;
 	public LayerMask notInVisionLayer;
-	public float enemyDmg=10;
+	public float enemyDmg;
 	public float attackDist;
 	[HideInInspector] public Transform chaseTarget;
 	[HideInInspector] public StateMachine currentState;
@@ -25,6 +25,7 @@ public class EnemyAI : MonoBehaviour {
 	[HideInInspector] public Animator anim;
 	private float enemyHealth = 100;
 	private float enemyCurrentHealth = 100;
+	private float originalSpeed;
 
 
 	void Awake () {
@@ -59,11 +60,21 @@ public class EnemyAI : MonoBehaviour {
 		currentState.TriggerEnter(other);
 	}
 	public void TakeDmg(float dmg){
-		enemyCurrentHealth -= dmg;
-		anim.Play ("Hurt");
+		//dmg> 900 is special damage 999 is root
+		if (dmg > 900) {
+			if (dmg == 999f) {
+				originalSpeed = navMeshAgent.speed;
+				navMeshAgent.speed = 0;
+				Invoke ("DisableRoot", 3.0f);//root for 3 sec
+			}
+		} else {
+			enemyCurrentHealth -= dmg;
+		}
 	}
 	private void Died(){
 		Destroy (gameObject);
 	}
-		
+	public void DisableRoot(){
+		navMeshAgent.speed = originalSpeed;
+	}
 }

@@ -20,6 +20,7 @@ public class MoveScript : MonoBehaviour {
 	private float ratio;
 	Animator anim;
 	public float animSpeed = 0.1f;
+	private bool root;
 	[HideInInspector] public bool enableInput;
 
 
@@ -32,6 +33,7 @@ public class MoveScript : MonoBehaviour {
 	void Start(){
 		rb = gameObject.GetComponent<Rigidbody>();
 		anim = GetComponent<Animator>();
+		root = false;
 	}
 
 	void Update ()
@@ -54,9 +56,11 @@ public class MoveScript : MonoBehaviour {
 					isRight = false;
 					transform.Rotate (Vector3.up * 180f);
 				}
-				Vector3 position = this.transform.position;
-				position.x = position.x - movingSpeed;
-				this.transform.position = position;
+				if (!root) {
+					Vector3 position = this.transform.position;
+					position.x = position.x - movingSpeed;
+					this.transform.position = position;
+				}
 				anim.Play ("Run");
 				animSpeed = 0.5f;
 			}
@@ -73,9 +77,11 @@ public class MoveScript : MonoBehaviour {
 					isLeft = false;
 					transform.Rotate (Vector3.up * -180f);
 				}
-				Vector3 position = this.transform.position;
-				position.x = position.x + movingSpeed;
-				this.transform.position = position;
+				if (!root) {
+					Vector3 position = this.transform.position;
+					position.x = position.x + movingSpeed;
+					this.transform.position = position;
+				}
 				anim.Play ("Run");
 				animSpeed = 0.5f;
 			}
@@ -86,9 +92,11 @@ public class MoveScript : MonoBehaviour {
 			}
 
 			if (Input.GetKey (KeyCode.UpArrow)) {
-				Vector3 position = this.transform.position;
-				position.z = position.z + movingSpeed;
-				this.transform.position = position;
+				if (!root) {
+					Vector3 position = this.transform.position;
+					position.z = position.z + movingSpeed;
+					this.transform.position = position;
+				}
 				anim.Play ("Run");
 				animSpeed = 0.5f;
 			}
@@ -99,9 +107,11 @@ public class MoveScript : MonoBehaviour {
 			}
 
 			if (Input.GetKey (KeyCode.DownArrow)) {
-				Vector3 position = this.transform.position;
-				position.z = position.z - movingSpeed;
-				this.transform.position = position;
+				if (!root) {
+					Vector3 position = this.transform.position;
+					position.z = position.z - movingSpeed;
+					this.transform.position = position;
+				}
 				anim.Play ("Run");
 				animSpeed = 0.5f;
 			}
@@ -113,9 +123,10 @@ public class MoveScript : MonoBehaviour {
 
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				if (isGround) {
-				
-					rb.AddForce (Vector3.up * JumpForce);
-					isGround = false;
+					if (!root) {
+						rb.AddForce (Vector3.up * JumpForce);
+						isGround = false;
+					}
 				}
 			}
 			if (Input.GetKeyDown (KeyCode.Z)) {
@@ -132,29 +143,35 @@ public class MoveScript : MonoBehaviour {
 	}
 
 	public void TakeDmg(float dmg){
-		playerCurrentHealth -= dmg;
+		//dmg> 900 is special damage 999 is root
+		if (dmg > 900) {
+			if (dmg == 999f) {
+				root = true;
+				anim.Play ("Idle");
+				animSpeed = 0.1f;
+				Invoke ("DisableRoot", 3.0f);//root for 3 sec
+			}
+		} else {
+			playerCurrentHealth -= dmg;
+		}
 	}
 	void OnCollisionEnter(Collision coll) {
 		if (coll.gameObject.tag == "Ground")
 			isGround = true;
 	}
-	void OnTriggerEnter(Collider other) {
-		if (other.tag == "Maze") {
-			mainCam.SendMessage ("ChangeView");
-		}
-	}
-	void OnTriggerExit(Collider other) {
-		if (other.tag == "Maze") {
-			mainCam.SendMessage ("ResetView");
-		}
-	}
+
 
 	private void LaunchAttack(Collider col){
 		Collider[] colls = Physics.OverlapBox (col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask ("Hitbox"));
 		foreach (Collider c in colls) {
+			//Call TakeDmg to everything in the hitbox layer can be used as method in all triger
 			c.SendMessageUpwards ("TakeDmg", meeleDmg);
 		}
 
+	}
+
+	void DisableRoot(){
+		root = false;
 	}
 
 
