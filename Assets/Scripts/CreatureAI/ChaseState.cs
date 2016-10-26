@@ -6,12 +6,11 @@ public class ChaseState : StateMachine
 {
 
 	private readonly EnemyAI enemy;
-	private float killTimer;
 
 	public ChaseState (EnemyAI enemyAI)
 	{
 		enemy = enemyAI;
-		killTimer = 0;
+	
 	}
 
 	public void UpdateState()

@@ -45,6 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BeeHauseTriger.cs" />
+     <Compile Include="Assets\Fire.cs" />
+     <Compile Include="Assets\RootTrap.cs" />
      <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\AlertState.cs" />
@@ -53,6 +56,7 @@
      <Compile Include="Assets\Scripts\CreatureAI\KillState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\PatrolState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\CutBridge.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\FireEffectScript.cs" />
      <Compile Include="Assets\Scripts\MidGroundManager.cs" />
@@ -62,6 +66,7 @@
      <Compile Include="Assets\Scripts\RendererExtensions.cs.cs" />
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
      <Compile Include="Assets\Scripts\SimpleCCD.cs" />
+     <Compile Include="Assets\Scripts\StartAFire.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

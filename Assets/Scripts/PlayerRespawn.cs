@@ -48,7 +48,7 @@ public class PlayerRespawn: MonoBehaviour {
 	}
 
 	IEnumerator Dead() {
-		Debug.Log ("dead");
+	//	Debug.Log ("dead");
 		playerPrefab.GetComponent<Renderer> ().enabled = false;
 		//hide all hp bars image
 		moveScript.HealthBar.GetComponent<CanvasRenderer> ().SetAlpha (0);
@@ -56,18 +56,18 @@ public class PlayerRespawn: MonoBehaviour {
 		moveScript.enableInput = false;
 		yield return new WaitForSeconds(3);
 		spawnPlayer();
-		Debug.Log ("respawn");
+	//	Debug.Log ("respawn");
 	}
 
 	void spawnPlayer (){
 
 		if (playerPrefab != null) {
 			
-			print ("Player prefab is not null");
+			//print ("Player prefab is not null");
 			
 		} else {
 			
-			print("Missing the prefabs");
+		//	print("Missing the prefabs");
 		}
 
 		//for now is only one respawn point, will increase the range later
