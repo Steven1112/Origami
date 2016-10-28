@@ -69,6 +69,11 @@
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
      <Compile Include="Assets\Scripts\SimpleCCD.cs" />
      <Compile Include="Assets\Scripts\StartAFire.cs" />
+     <Compile Include="Assets\Scripts\changeImage.cs" />
+     <Compile Include="Assets\Scripts\openUi.cs" />
+     <Compile Include="Assets\Scripts\pickupAxe.cs" />
+     <Compile Include="Assets\Scripts\pickupFirewood.cs" />
+     <Compile Include="Assets\Scripts\pickupFlintstones.cs" />
      <Compile Include="Assets\TurnOnGravity.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
