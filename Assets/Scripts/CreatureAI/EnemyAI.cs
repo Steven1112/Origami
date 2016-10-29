@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour {
 	public LayerMask notInVisionLayer;
 	public float enemyDmg;
 	public float attackDist;
+	public GameObject Gate;
 	[HideInInspector] public Transform chaseTarget;
 	[HideInInspector] public StateMachine currentState;
 	[HideInInspector] public ChaseState chaseState;
@@ -76,5 +77,8 @@ public class EnemyAI : MonoBehaviour {
 	}
 	public void DisableRoot(){
 		navMeshAgent.speed = originalSpeed;
+	}
+	public void DisableGate(){
+		Gate.SetActive (false);
 	}
 }

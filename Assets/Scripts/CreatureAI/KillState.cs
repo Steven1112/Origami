@@ -25,7 +25,7 @@ public class KillState : StateMachine {
 
 	public void ToPatrolState()
 	{
-
+		enemy.currentState = enemy.patrolState;
 	}
 
 	public void ToAlertState()
@@ -45,7 +45,7 @@ public class KillState : StateMachine {
 	private void Look()
 	{
 			enemy.meshRendererFlag.material.color = Color.red;
-
+		if (enemy.chaseTarget != null) {
 			float dist = Vector3.Distance (enemy.chaseTarget.position, enemy.eyes.transform.position);
 			if (dist < enemy.attackDist) {
 				killTimer += Time.deltaTime;
@@ -58,7 +58,9 @@ public class KillState : StateMachine {
 				//Debug.Log ("BackTOAlert");
 				ToChaseState ();
 			}
-
+		} else {
+			ToPatrolState ();
+		}
 
 	}
 

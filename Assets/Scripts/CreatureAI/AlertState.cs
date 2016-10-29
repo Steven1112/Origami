@@ -47,8 +47,11 @@ public class AlertState : StateMachine
 	private void Look()
 	{
 		RaycastHit hit;
-		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemy.eyes.transform.forward, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Player")) {
+		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemy.eyes.transform.forward, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Apple")) {
 			//Debug.Log (hit.collider.name);
+			if (enemy.Gate != null) {
+				enemy.DisableGate ();
+			}
 			enemy.chaseTarget = hit.transform;
 			ToChaseState();
 		}

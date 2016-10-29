@@ -48,7 +48,10 @@ public class ChaseState : StateMachine
 	{
 		RaycastHit hit;
 		Vector3 enemyToTarget = (enemy.chaseTarget.position) - enemy.eyes.transform.position;
-		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemyToTarget, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Player")) {
+		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemyToTarget, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Apple")) {
+			if (enemy.Gate != null) {
+				enemy.DisableGate ();
+			}
 			enemy.chaseTarget = hit.transform;
 		}
 		else
@@ -67,11 +70,13 @@ public class ChaseState : StateMachine
 
 	private void Chase()
 	{
-		enemy.anim.Play ("Run");
-		enemy.meshRendererFlag.material.color = Color.red;
-		enemy.navMeshAgent.destination = enemy.chaseTarget.position;
-		enemy.navMeshAgent.Resume ();
+		if (enemy.chaseTarget != null) {
+			enemy.anim.Play ("Run");
+			enemy.meshRendererFlag.material.color = Color.red;
 
+			enemy.navMeshAgent.destination = enemy.chaseTarget.position;
+			enemy.navMeshAgent.Resume ();
+		}
 	}
 
 

@@ -22,7 +22,7 @@ public class Fire : MonoBehaviour {
 		}
 		if (coll.gameObject.tag=="Monster1") {
 			//monster step on trap will destory it 
-			coll.gameObject.SendMessage ("TakeDmg", fireDmgMonster);
+			coll.gameObject.SendMessage ("TakeDmg", fireDmgMonster,SendMessageOptions.DontRequireReceiver);
 			Destroy (gameObject);
 		}
 	}

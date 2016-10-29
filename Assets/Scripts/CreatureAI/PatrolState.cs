@@ -18,7 +18,7 @@ public class PatrolState : StateMachine {
 
 	public void TriggerEnter(Collider coll)
 	{
-		if (coll.gameObject.CompareTag ("Player"))
+		if (coll.gameObject.CompareTag ("Apple"))
 			ToAlertState ();
 	}
 
@@ -41,7 +41,10 @@ public class PatrolState : StateMachine {
 	private void Look()
 	{
 		RaycastHit hit;
-		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemy.eyes.transform.forward, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Player")) {
+		if (Physics.SphereCast (enemy.eyes.transform.position,enemy.visionSphereR, enemy.eyes.transform.forward, out hit, enemy.sightRange,enemy.notInVisionLayer.value) && hit.collider.CompareTag ("Apple")) {
+			if (enemy.Gate != null) {
+				enemy.DisableGate ();
+			}
 			enemy.chaseTarget = hit.transform;
 			ToChaseState();
 		}

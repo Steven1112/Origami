@@ -45,11 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DIedZone.cs" />
+     <Compile Include="Assets\Apple.cs" />
      <Compile Include="Assets\Scripts\BeeHauseTriger.cs" />
      <Compile Include="Assets\Scripts\BeeHouseAttack.cs" />
      <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\ClickToMove.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\AlertState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\ChaseState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\EnemyAI.cs" />
@@ -57,6 +58,7 @@
      <Compile Include="Assets\Scripts\CreatureAI\PatrolState.cs" />
      <Compile Include="Assets\Scripts\CreatureAI\StateMachine.cs" />
      <Compile Include="Assets\Scripts\CutBridge.cs" />
+     <Compile Include="Assets\Scripts\DIedZone.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Fire.cs" />
      <Compile Include="Assets\Scripts\FireEffectScript.cs" />
@@ -69,12 +71,12 @@
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
      <Compile Include="Assets\Scripts\SimpleCCD.cs" />
      <Compile Include="Assets\Scripts\StartAFire.cs" />
+     <Compile Include="Assets\Scripts\TurnOnGravity.cs" />
      <Compile Include="Assets\Scripts\changeImage.cs" />
      <Compile Include="Assets\Scripts\openUi.cs" />
      <Compile Include="Assets\Scripts\pickupAxe.cs" />
      <Compile Include="Assets\Scripts\pickupFirewood.cs" />
      <Compile Include="Assets\Scripts\pickupFlintstones.cs" />
-     <Compile Include="Assets\TurnOnGravity.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
